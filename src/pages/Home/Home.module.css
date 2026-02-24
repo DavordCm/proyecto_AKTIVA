@@ -3,8 +3,8 @@
 }
 
 .features {
-  padding: 3rem 1rem;
-  background: linear-gradient(135deg, #F8F9FA 0%, #E8F5E9 100%);
+  padding: 4rem 1rem;
+  background: linear-gradient(135deg, #FBF9F6 0%, #E8DDD1 100%);
 }
 
 .container {
@@ -17,17 +17,18 @@
 
 .featureCard {
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  border-left: 4px solid #FF8C42;
+  border-left: 4px solid #8B7355;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .featureCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(255, 140, 66, 0.15);
-  border-left-color: #27AE60;
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(139, 115, 85, 0.15);
+  border-left-color: #9CBF88;
 }
 
 .icon {
@@ -37,14 +38,14 @@
 
 .featureCard h3 {
   margin: 1rem 0 0.5rem 0;
-  color: #333;
+  color: #5C4A3D;
   font-size: 1.2rem;
   font-weight: 600;
 }
 
 .featureCard p {
   margin: 0;
-  color: #666;
+  color: #8B7355;
   font-size: 0.95rem;
 }
 

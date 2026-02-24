@@ -1,9 +1,9 @@
 .footer {
-  background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+  background: linear-gradient(135deg, #5C4A3D 0%, #6F5C4E 100%);
   color: white;
   margin-top: 4rem;
   padding: 3rem 1rem 1rem;
-  border-top: 4px solid #FF8C42;
+  border-top: 4px solid #8B7355;
 }
 
 .container {
@@ -19,7 +19,7 @@
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.3rem;
-  color: #FF8C42;
+  color: #D4C5B9;
 }
 
 .column h4 {
@@ -52,7 +52,7 @@
 }
 
 .column a:hover {
-  color: #FF8C42;
+  color: #9CBF88;
 }
 
 .socialLinks {

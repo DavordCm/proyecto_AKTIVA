@@ -1,9 +1,9 @@
 .header {
   background: white;
-  border-bottom: 3px solid #FF8C42;
-  color: #333;
+  border-bottom: 3px solid #8B7355;
+  color: #5C4A3D;
   padding: 0.75rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -37,7 +37,7 @@
 }
 
 .navLink {
-  color: #333;
+  color: #5C4A3D;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -45,7 +45,7 @@
 }
 
 .navLink:hover {
-  color: #FF8C42;
+  color: #9CBF88;
 }
 
 .icons {
