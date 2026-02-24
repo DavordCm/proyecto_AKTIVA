@@ -1,0 +1,67 @@
+.home {
+  min-height: 100vh;
+}
+
+.features {
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #F8F9FA 0%, #E8F5E9 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.featureCard {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: white;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border-left: 4px solid #FF8C42;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(255, 140, 66, 0.15);
+  border-left-color: #27AE60;
+}
+
+.icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.featureCard h3 {
+  margin: 1rem 0 0.5rem 0;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.featureCard p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .features {
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    gap: 1.5rem;
+  }
+
+  .featureCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+}

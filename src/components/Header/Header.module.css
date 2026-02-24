@@ -1,0 +1,300 @@
+.header {
+  background: white;
+  border-bottom: 3px solid #FF8C42;
+  color: #333;
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.logo {
+  flex: 1;
+  margin: 0;
+}
+
+.logoImg {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  flex: 2;
+  justify-content: center;
+}
+
+.navLink {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.navLink:hover {
+  color: #FF8C42;
+}
+
+.icons {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.iconBtn:hover {
+  background-color: rgba(255, 140, 66, 0.1);
+}
+
+.searchWrapper {
+  position: relative;
+}
+
+.searchContainer {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 2px solid #FF8C42;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  min-width: 280px;
+  margin-top: 0.5rem;
+}
+
+.searchForm {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+  border-color: #FF8C42;
+}
+
+.searchBtn {
+  padding: 0.5rem 1rem;
+  background: #FF8C42;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.searchBtn:hover {
+  background-color: #E07B2E;
+}
+
+.searchResultsDropdown {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.searchResultItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.searchResultItem:last-child {
+  border-bottom: none;
+}
+
+.searchResultItem:hover {
+  background-color: #FFF4E6;
+}
+
+.resultEmoji {
+  font-size: 1.5rem;
+}
+
+.resultInfo {
+  flex: 1;
+}
+
+.resultName {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.resultPrice {
+  color: #FF8C42;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.noResults {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.userWrapper {
+  position: relative;
+}
+
+.userMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 2px solid #FF8C42;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  min-width: 180px;
+  margin-top: 0.5rem;
+}
+
+.userMenuLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.userMenuLink:last-child {
+  border-bottom: none;
+}
+
+.userMenuLink:hover {
+  background-color: #FFF4E6;
+  color: #FF8C42;
+}
+
+.cartIcon {
+  position: relative;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #FF8C42;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .topBarContent {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .whatsapp {
+    width: 36px;
+    height: 36px;
+  }
+
+  .whatsapp svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: white;
+    padding: 1rem;
+    gap: 1rem;
+    border-bottom: 1px solid #FF8C42;
+  }
+
+  .nav.navOpen {
+    display: flex;
+  }
+
+  .menuToggle {
+    display: block;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .logoImg {
+    height: 50px;
+  }
+
+  .icons {
+    gap: 1rem;
+  }
+
+  .iconBtn {
+    font-size: 1.1rem;
+    padding: 0.3rem;
+  }
+
+  .searchForm {
+    min-width: 200px;
+  }
+}
