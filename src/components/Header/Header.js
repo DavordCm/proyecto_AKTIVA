@@ -80,7 +80,7 @@ function Header({ cartCount, products = [] }) {
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
           <a href="#/" className={styles.navLink}>Inicio</a>
-          <a href="#" onClick={handleProductsClick} className={styles.navLink}>Productos</a>
+          <a href="javascript:void(0)" onClick={handleProductsClick} className={styles.navLink}>Productos</a>
           <a href="#/about" className={styles.navLink}>Sobre Nosotros</a>
           <a href="#/contact" className={styles.navLink}>Contacto</a>
         </nav>
