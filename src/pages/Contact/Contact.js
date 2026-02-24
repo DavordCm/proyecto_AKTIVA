@@ -134,10 +134,10 @@ function Contact() {
         <div className={styles.socialSection}>
           <h2>Síguenos en redes</h2>
           <div className={styles.socialLinks}>
-            <a href="javascript:void(0)" className={styles.socialLink}>📘 Facebook</a>
-            <a href="javascript:void(0)" className={styles.socialLink}>📷 Instagram</a>
-            <a href="javascript:void(0)" className={styles.socialLink}>🎵 TikTok</a>
-            <a href="javascript:void(0)" className={styles.socialLink}>💼 LinkedIn</a>
+            <button className={styles.socialLink} style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>📘 Facebook</button>
+            <button className={styles.socialLink} style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>📷 Instagram</button>
+            <button className={styles.socialLink} style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>🎵 TikTok</button>
+            <button className={styles.socialLink} style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>💼 LinkedIn</button>
           </div>
         </div>
       </div>
