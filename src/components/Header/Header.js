@@ -35,6 +35,31 @@ function Header({ cartCount, products = [] }) {
     setSearchOpen(false);
   };
 
+  const handleProductsClick = (e) => {
+    e.preventDefault();
+    setMenuOpen(false);
+
+    const currentHash = window.location.hash.slice(1) || '/';
+
+    // Si no estamos en Home, navega primero
+    if (currentHash !== '/' && currentHash !== '') {
+      window.location.hash = '#/';
+      // Usar setTimeout para que React renderice Home antes de hacer scroll
+      setTimeout(() => {
+        const productsSection = document.getElementById('products-section');
+        if (productsSection) {
+          productsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    } else {
+      // Si ya estamos en Home, haz scroll inmediatamente
+      const productsSection = document.getElementById('products-section');
+      if (productsSection) {
+        productsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -54,10 +79,10 @@ function Header({ cartCount, products = [] }) {
         </button>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>
-          <a href="#home" className={styles.navLink}>Inicio</a>
-          <a href="#products" className={styles.navLink}>Productos</a>
-          <a href="#about" className={styles.navLink}>Sobre Nosotros</a>
-          <a href="#contact" className={styles.navLink}>Contacto</a>
+          <a href="#/" className={styles.navLink}>Inicio</a>
+          <a href="#" onClick={handleProductsClick} className={styles.navLink}>Productos</a>
+          <a href="#/about" className={styles.navLink}>Sobre Nosotros</a>
+          <a href="#/contact" className={styles.navLink}>Contacto</a>
         </nav>
 
         <div className={styles.icons}>

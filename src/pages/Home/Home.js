@@ -27,7 +27,7 @@ function Home({ onAddToCart }) {
           </div>
         </div>
       </section>
-      <ProductGrid products={products} onAddToCart={onAddToCart} />
+      <ProductGrid id="products-section" products={products} onAddToCart={onAddToCart} />
     </div>
   );
 }

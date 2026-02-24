@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -6,11 +6,25 @@ import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import AboutUs from './pages/AboutUs/AboutUs';
+import Contact from './pages/Contact/Contact';
+import RoleSelector from './pages/RoleSelector/RoleSelector';
+import Client from './pages/Client/Client';
+import Employee from './pages/Employee/Employee';
 import { products } from './data/products';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  const currentHash = window.location.hash.slice(1) || '/';
+  const [currentHash, setCurrentHash] = useState(window.location.hash.slice(1) || '/');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash.slice(1) || '/');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const handleAddToCart = (product) => {
     const existingItem = cartItems.find(item => item.id === product.id);
@@ -25,17 +39,24 @@ function App() {
     }
   };
 
+  const hideHeaderFooter = ['/login', '/register', '/roles', '/client', '/employee'].includes(currentHash);
+
   return (
     <div className="App">
-      {currentHash !== '/login' && currentHash !== '/register' && (
+      {!hideHeaderFooter && (
         <Header cartCount={cartItems.length} products={products} />
       )}
       <main className="main-content">
         {currentHash === '/login' && <Login />}
         {currentHash === '/register' && <Register />}
+        {currentHash === '/about' && <AboutUs />}
+        {currentHash === '/contact' && <Contact />}
+        {currentHash === '/roles' && <RoleSelector />}
+        {currentHash === '/client' && <Client onAddToCart={handleAddToCart} />}
+        {currentHash === '/employee' && <Employee />}
         {(currentHash === '/' || currentHash === '') && <Home onAddToCart={handleAddToCart} />}
       </main>
-      {currentHash !== '/login' && currentHash !== '/register' && (
+      {!hideHeaderFooter && (
         <>
           <Footer />
           <WhatsAppButton />
