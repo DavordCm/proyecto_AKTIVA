@@ -45,7 +45,7 @@ function Employee() {
               <div className={styles.statCard}>
                 <div className={styles.statIcon}><FiDollarSign size={28} /></div>
                 <h3>Ventas Totales</h3>
-                <p className={styles.statValue}>S/ {totalSales.toFixed(2)}</p>
+                <p className={styles.statValue}>$ {totalSales.toFixed(2)}</p>
               </div>
               <div className={styles.statCard}>
                 <div className={styles.statIcon}><FiPackage size={28} /></div>
@@ -90,7 +90,7 @@ function Employee() {
               {inventory.map(item => (
                 <div key={item.id} className={styles.tableRow}>
                   <div className={styles.col1}>{item.name}</div>
-                  <div className={styles.col2}>S/ {item.price.toFixed(2)}</div>
+                  <div className={styles.col2}>$ {item.price.toFixed(2)}</div>
                   <div className={styles.col3}>
                     <input
                       type="number"
@@ -122,7 +122,7 @@ function Employee() {
                 </div>
                 <p><strong>Cliente:</strong> Juan Pérez</p>
                 <p><strong>Productos:</strong> Quinoa & Almendras (x2), Maca & Cacao (x1)</p>
-                <p><strong>Total:</strong> S/ 28.00</p>
+                <p><strong>Total:</strong> $ 28.00</p>
               </div>
               <div className={styles.orderCard}>
                 <div className={styles.orderHeader}>
@@ -131,7 +131,7 @@ function Employee() {
                 </div>
                 <p><strong>Cliente:</strong> María García</p>
                 <p><strong>Productos:</strong> Pack 6 Barras Variadas (x1)</p>
-                <p><strong>Total:</strong> S/ 45.00</p>
+                <p><strong>Total:</strong> $ 45.00</p>
               </div>
               <div className={styles.orderCard}>
                 <div className={styles.orderHeader}>
@@ -140,7 +140,7 @@ function Employee() {
                 </div>
                 <p><strong>Cliente:</strong> Carlos López</p>
                 <p><strong>Productos:</strong> Kiwicha, Banana & Tarwi (x3)</p>
-                <p><strong>Total:</strong> S/ 25.50</p>
+                <p><strong>Total:</strong> $ 25.50</p>
               </div>
             </div>
           </div>

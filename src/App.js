@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header/Header';
+import AnnouncementBar from './components/AnnouncementBar/AnnouncementBar';
 import Footer from './components/Footer/Footer';
 import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
 import Home from './pages/Home/Home';
@@ -70,6 +71,7 @@ function App() {
 
   return (
     <div className="App">
+      {!hideHeaderFooter && <AnnouncementBar />}
       {!hideHeaderFooter && (
         <Header
           cartItems={cartItems}

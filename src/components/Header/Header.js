@@ -77,7 +77,7 @@ function Header({ cartItems = [], onRemoveFromCart, onQuantityChange, products =
                         <div className={styles.resultEmoji}>{product.emoji}</div>
                         <div className={styles.resultInfo}>
                           <div className={styles.resultName}>{product.name}</div>
-                          <div className={styles.resultPrice}>S/ {product.price.toFixed(2)}</div>
+                          <div className={styles.resultPrice}>$ {product.price.toFixed(2)}</div>
                         </div>
                       </div>
                     ))}
@@ -130,7 +130,7 @@ function Header({ cartItems = [], onRemoveFromCart, onQuantityChange, products =
                           <div className={styles.itemEmoji}>{item.emoji}</div>
                           <div className={styles.itemInfo}>
                             <span className={styles.itemName}>{item.name}</span>
-                            <span className={styles.itemPrice}>S/ {item.price.toFixed(2)}</span>
+                            <span className={styles.itemPrice}>$ {item.price.toFixed(2)}</span>
                           </div>
                           <div className={styles.itemControls}>
                             <button onClick={() => onQuantityChange(item.id, item.quantity - 1)}><FiMinus size={12} /></button>
@@ -144,7 +144,7 @@ function Header({ cartItems = [], onRemoveFromCart, onQuantityChange, products =
                     <div className={styles.cartFooter}>
                       <div className={styles.cartTotal}>
                         <span>Total:</span>
-                        <span className={styles.totalPrice}>S/ {cartTotal.toFixed(2)}</span>
+                        <span className={styles.totalPrice}>$ {cartTotal.toFixed(2)}</span>
                       </div>
                       <button className={styles.checkoutBtn}>Proceder al Pago</button>
                     </div>

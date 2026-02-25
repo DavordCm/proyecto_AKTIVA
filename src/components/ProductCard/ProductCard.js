@@ -27,7 +27,8 @@ function ProductCard({ product, onAddToCart }) {
 
         <div className={styles.footer}>
           <div className={styles.price}>
-            S/ {product.price.toFixed(2)}
+            $ {product.price.toFixed(2)}
+            <span className={styles.priceAlt}>≈ S/ {(product.price * 3.31).toFixed(2)}</span>
           </div>
           <button
             className={styles.button}

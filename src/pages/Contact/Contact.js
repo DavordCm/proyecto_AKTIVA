@@ -29,7 +29,7 @@ function Contact() {
           <div className={styles.infoCard}>
             <div className={styles.infoIcon}><FiMapPin size={28} /></div>
             <h3>Dirección</h3>
-            <p>Calle Principal 123<br />Lima, Perú 15001</p>
+            <p>Av. Alfredo Benavides 768<br />Miraflores, Lima 18, Perú</p>
           </div>
 
           <div className={styles.infoCard}>

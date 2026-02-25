@@ -71,7 +71,7 @@ function Client({ onAddToCart }) {
                     <div key={item.id} className={styles.cartItem}>
                       <div className={styles.itemInfo}>
                         <h4>{item.name}</h4>
-                        <p>S/ {item.price.toFixed(2)}</p>
+                        <p>$ {item.price.toFixed(2)}</p>
                       </div>
                       <div className={styles.itemControls}>
                         <button onClick={() => handleQuantityChange(item.id, item.quantity - 1)}>-</button>
@@ -84,7 +84,7 @@ function Client({ onAddToCart }) {
                         <button onClick={() => handleQuantityChange(item.id, item.quantity + 1)}>+</button>
                       </div>
                       <div className={styles.itemTotal}>
-                        S/ {(item.price * item.quantity).toFixed(2)}
+                        $ {(item.price * item.quantity).toFixed(2)}
                       </div>
                       <button
                         className={styles.removeBtn}
@@ -98,7 +98,7 @@ function Client({ onAddToCart }) {
                 <div className={styles.cartSummary}>
                   <div className={styles.totalRow}>
                     <span>Total:</span>
-                    <span className={styles.totalPrice}>S/ {total.toFixed(2)}</span>
+                    <span className={styles.totalPrice}>$ {total.toFixed(2)}</span>
                   </div>
                   <button className={styles.checkoutBtn}>Proceder al Pago</button>
                   <button
@@ -122,7 +122,7 @@ function Client({ onAddToCart }) {
                   <p className={styles.description}>{product.description}</p>
                   <div className={styles.flavor}>Sabor: {product.flavor}</div>
                   <div className={styles.priceSection}>
-                    <span className={styles.price}>S/ {product.price.toFixed(2)}</span>
+                    <span className={styles.price}>$ {product.price.toFixed(2)}</span>
                     <button
                       className={styles.addBtn}
                       onClick={() => handleAddToCart(product)}

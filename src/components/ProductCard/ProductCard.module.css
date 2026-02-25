@@ -91,6 +91,15 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #8B7355;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.priceAlt {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #aaa;
 }
 
 .button {

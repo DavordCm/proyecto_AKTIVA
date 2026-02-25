@@ -24,7 +24,7 @@ function Footer() {
 
         <div className={styles.column}>
           <h4>Contáctanos</h4>
-          <p><FiMapPin size={14} style={{ marginRight: '0.4rem' }} />Lima, Perú</p>
+          <p><FiMapPin size={14} style={{ marginRight: '0.4rem' }} />Av. Alfredo Benavides 768, Miraflores, Lima 18</p>
           <p><FiMail size={14} style={{ marginRight: '0.4rem' }} />info@aktivaenergy.pe</p>
           <p><FiPhone size={14} style={{ marginRight: '0.4rem' }} />+51 999 999 999</p>
         </div>
