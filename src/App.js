@@ -11,6 +11,7 @@ import Contact from './pages/Contact/Contact';
 import RoleSelector from './pages/RoleSelector/RoleSelector';
 import Client from './pages/Client/Client';
 import Employee from './pages/Employee/Employee';
+import Productos from './pages/Productos/Productos';
 import { products } from './data/products';
 
 function App() {
@@ -39,12 +40,31 @@ function App() {
     }
   };
 
+  const handleRemoveFromCart = (productId) => {
+    setCartItems(cartItems.filter(item => item.id !== productId));
+  };
+
+  const handleQuantityChange = (productId, quantity) => {
+    if (quantity <= 0) {
+      handleRemoveFromCart(productId);
+    } else {
+      setCartItems(cartItems.map(item =>
+        item.id === productId ? { ...item, quantity } : item
+      ));
+    }
+  };
+
   const hideHeaderFooter = ['/login', '/register', '/roles', '/client', '/employee'].includes(currentHash);
 
   return (
     <div className="App">
       {!hideHeaderFooter && (
-        <Header cartCount={cartItems.length} products={products} />
+        <Header
+          cartItems={cartItems}
+          products={products}
+          onRemoveFromCart={handleRemoveFromCart}
+          onQuantityChange={handleQuantityChange}
+        />
       )}
       <main className="main-content">
         {currentHash === '/login' && <Login />}
@@ -54,6 +74,7 @@ function App() {
         {currentHash === '/roles' && <RoleSelector />}
         {currentHash === '/client' && <Client onAddToCart={handleAddToCart} />}
         {currentHash === '/employee' && <Employee />}
+        {currentHash === '/productos' && <Productos onAddToCart={handleAddToCart} />}
         {(currentHash === '/' || currentHash === '') && <Home onAddToCart={handleAddToCart} />}
       </main>
       {!hideHeaderFooter && (

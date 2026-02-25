@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiBarChart2, FiPackage, FiClipboard, FiDollarSign, FiAlertTriangle, FiTrendingUp, FiCheckCircle, FiClock, FiTruck } from 'react-icons/fi';
 import styles from './Employee.module.css';
 import { products } from '../../data/products';
 
@@ -20,28 +21,19 @@ function Employee() {
   return (
     <div className={styles.employeeContainer}>
       <div className={styles.header}>
-        <h1>👨‍💼 Panel de Empleado - AKTIVA</h1>
+        <h1>Panel de Empleado - AKTIVA</h1>
         <p>Gestión de inventario y ventas</p>
       </div>
 
       <div className={styles.tabs}>
-        <button
-          className={`${styles.tab} ${activeTab === 'stats' ? styles.active : ''}`}
-          onClick={() => setActiveTab('stats')}
-        >
-          📊 Estadísticas
+        <button className={`${styles.tab} ${activeTab === 'stats' ? styles.active : ''}`} onClick={() => setActiveTab('stats')}>
+          <FiBarChart2 size={17} /> Estadísticas
         </button>
-        <button
-          className={`${styles.tab} ${activeTab === 'inventory' ? styles.active : ''}`}
-          onClick={() => setActiveTab('inventory')}
-        >
-          📦 Inventario
+        <button className={`${styles.tab} ${activeTab === 'inventory' ? styles.active : ''}`} onClick={() => setActiveTab('inventory')}>
+          <FiPackage size={17} /> Inventario
         </button>
-        <button
-          className={`${styles.tab} ${activeTab === 'orders' ? styles.active : ''}`}
-          onClick={() => setActiveTab('orders')}
-        >
-          📋 Pedidos
+        <button className={`${styles.tab} ${activeTab === 'orders' ? styles.active : ''}`} onClick={() => setActiveTab('orders')}>
+          <FiClipboard size={17} /> Pedidos
         </button>
       </div>
 
@@ -51,25 +43,22 @@ function Employee() {
             <h2>Estadísticas del Mes</h2>
             <div className={styles.statsGrid}>
               <div className={styles.statCard}>
-                <div className={styles.statIcon}>💰</div>
+                <div className={styles.statIcon}><FiDollarSign size={28} /></div>
                 <h3>Ventas Totales</h3>
                 <p className={styles.statValue}>S/ {totalSales.toFixed(2)}</p>
               </div>
-
               <div className={styles.statCard}>
-                <div className={styles.statIcon}>📦</div>
+                <div className={styles.statIcon}><FiPackage size={28} /></div>
                 <h3>Productos</h3>
                 <p className={styles.statValue}>{products.length}</p>
               </div>
-
               <div className={styles.statCard}>
-                <div className={styles.statIcon}>⚠️</div>
+                <div className={styles.statIcon}><FiAlertTriangle size={28} /></div>
                 <h3>Stock Bajo</h3>
                 <p className={styles.statValue}>{lowStockItems.length}</p>
               </div>
-
               <div className={styles.statCard}>
-                <div className={styles.statIcon}>📈</div>
+                <div className={styles.statIcon}><FiTrendingUp size={28} /></div>
                 <h3>Crecimiento</h3>
                 <p className={styles.statValue}>+12.5%</p>
               </div>
@@ -77,12 +66,10 @@ function Employee() {
 
             {lowStockItems.length > 0 && (
               <div className={styles.alertBox}>
-                <h3>⚠️ Productos con Stock Bajo</h3>
+                <h3><FiAlertTriangle size={18} /> Productos con Stock Bajo</h3>
                 <ul>
                   {lowStockItems.map(item => (
-                    <li key={item.id}>
-                      {item.emoji} {item.name} - Stock: {item.stock} unidades
-                    </li>
+                    <li key={item.id}>{item.name} - Stock: {item.stock} unidades</li>
                   ))}
                 </ul>
               </div>
@@ -100,13 +87,9 @@ function Employee() {
                 <div className={styles.col3}>Stock Actual</div>
                 <div className={styles.col4}>Acciones</div>
               </div>
-
               {inventory.map(item => (
                 <div key={item.id} className={styles.tableRow}>
-                  <div className={styles.col1}>
-                    <span className={styles.emoji}>{item.emoji}</span>
-                    {item.name}
-                  </div>
+                  <div className={styles.col1}>{item.name}</div>
                   <div className={styles.col2}>S/ {item.price.toFixed(2)}</div>
                   <div className={styles.col3}>
                     <input
@@ -118,10 +101,7 @@ function Employee() {
                     />
                   </div>
                   <div className={styles.col4}>
-                    <button
-                      className={styles.saveBtn}
-                      onClick={() => alert(`Stock actualizado para ${item.name}`)}
-                    >
+                    <button className={styles.saveBtn} onClick={() => alert(`Stock actualizado para ${item.name}`)}>
                       Guardar
                     </button>
                   </div>
@@ -138,27 +118,25 @@ function Employee() {
               <div className={styles.orderCard}>
                 <div className={styles.orderHeader}>
                   <h3>Pedido #001</h3>
-                  <span className={styles.status}>✅ Entregado</span>
+                  <span className={`${styles.status} ${styles.delivered}`}><FiCheckCircle size={14} /> Entregado</span>
                 </div>
                 <p><strong>Cliente:</strong> Juan Pérez</p>
                 <p><strong>Productos:</strong> Quinoa & Almendras (x2), Maca & Cacao (x1)</p>
                 <p><strong>Total:</strong> S/ 28.00</p>
               </div>
-
               <div className={styles.orderCard}>
                 <div className={styles.orderHeader}>
                   <h3>Pedido #002</h3>
-                  <span className={styles.status}>⏳ Pendiente</span>
+                  <span className={`${styles.status} ${styles.pending}`}><FiClock size={14} /> Pendiente</span>
                 </div>
                 <p><strong>Cliente:</strong> María García</p>
                 <p><strong>Productos:</strong> Pack 6 Barras Variadas (x1)</p>
                 <p><strong>Total:</strong> S/ 45.00</p>
               </div>
-
               <div className={styles.orderCard}>
                 <div className={styles.orderHeader}>
                   <h3>Pedido #003</h3>
-                  <span className={styles.status}>🚚 Enviado</span>
+                  <span className={`${styles.status} ${styles.shipped}`}><FiTruck size={14} /> Enviado</span>
                 </div>
                 <p><strong>Cliente:</strong> Carlos López</p>
                 <p><strong>Productos:</strong> Kiwicha, Banana & Tarwi (x3)</p>

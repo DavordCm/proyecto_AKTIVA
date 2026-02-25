@@ -1,0 +1,124 @@
+.container {
+  min-height: 100vh;
+  background: #FBF9F6;
+}
+
+.banner {
+  background: linear-gradient(135deg, #8B7355 0%, #9CBF88 100%);
+  color: white;
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+}
+
+.banner h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+}
+
+.banner p {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.controls {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.searchBox {
+  position: relative;
+  max-width: 420px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.3s;
+  background: white;
+}
+
+.searchInput:focus {
+  border-color: #8B7355;
+}
+
+.filters {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 0.45rem 1.1rem;
+  border: 1.5px solid #ddd;
+  border-radius: 50px;
+  background: white;
+  color: #666;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.filterBtn:hover {
+  border-color: #8B7355;
+  color: #8B7355;
+}
+
+.filterBtn.active {
+  background: #8B7355;
+  border-color: #8B7355;
+  color: white;
+}
+
+.results {
+  max-width: 1200px;
+  margin: 1rem auto 0;
+  padding: 0 1.5rem;
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.grid {
+  max-width: 1200px;
+  margin: 1.5rem auto 4rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #999;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .banner h1 { font-size: 1.8rem; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+}

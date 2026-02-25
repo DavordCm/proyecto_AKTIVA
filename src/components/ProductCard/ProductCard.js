@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiShoppingCart } from 'react-icons/fi';
 import styles from './ProductCard.module.css';
 
 function ProductCard({ product, onAddToCart }) {
@@ -32,7 +33,7 @@ function ProductCard({ product, onAddToCart }) {
             className={styles.button}
             onClick={() => onAddToCart(product)}
           >
-            Agregar +
+            <FiShoppingCart size={15} /> Agregar
           </button>
         </div>
       </div>

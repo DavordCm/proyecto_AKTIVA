@@ -1,4 +1,6 @@
 import React from 'react';
+import { FiMapPin, FiMail, FiPhone, FiFacebook, FiInstagram } from 'react-icons/fi';
+import { FaTiktok, FaLinkedinIn } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 function Footer() {
@@ -13,32 +15,33 @@ function Footer() {
         <div className={styles.column}>
           <h4>Enlaces Rápidos</h4>
           <ul>
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#products">Productos</a></li>
-            <li><a href="#about">Sobre Nosotros</a></li>
-            <li><a href="#contact">Contacto</a></li>
+            <li><a href="#/">Inicio</a></li>
+            <li><a href="#/">Productos</a></li>
+            <li><a href="#/about">Sobre Nosotros</a></li>
+            <li><a href="#/contact">Contacto</a></li>
           </ul>
         </div>
 
         <div className={styles.column}>
           <h4>Contáctanos</h4>
-          <p>📍 Lima, Perú</p>
-          <p>📧 info@aktivaenergy.pe</p>
-          <p>📱 +51 999 999 999</p>
+          <p><FiMapPin size={14} style={{ marginRight: '0.4rem' }} />Lima, Perú</p>
+          <p><FiMail size={14} style={{ marginRight: '0.4rem' }} />info@aktivaenergy.pe</p>
+          <p><FiPhone size={14} style={{ marginRight: '0.4rem' }} />+51 999 999 999</p>
         </div>
 
         <div className={styles.column}>
           <h4>Síguenos</h4>
           <div className={styles.socialLinks}>
-            <a href="#facebook">📘 Facebook</a>
-            <a href="#instagram">📷 Instagram</a>
-            <a href="#tiktok">🎵 TikTok</a>
+            <a href="#facebook" className={styles.socialIcon}><FiFacebook size={20} /></a>
+            <a href="#instagram" className={styles.socialIcon}><FiInstagram size={20} /></a>
+            <a href="#tiktok" className={styles.socialIcon}><FaTiktok size={18} /></a>
+            <a href="#linkedin" className={styles.socialIcon}><FaLinkedinIn size={18} /></a>
           </div>
         </div>
       </div>
 
       <div className={styles.bottom}>
-        <p>&copy; 2024 AKTIVA Energy - Todos los derechos reservados</p>
+        <p>&copy; 2025 AKTIVA Energy - Todos los derechos reservados</p>
       </div>
     </footer>
   );
