@@ -12,11 +12,23 @@ import RoleSelector from './pages/RoleSelector/RoleSelector';
 import Client from './pages/Client/Client';
 import Employee from './pages/Employee/Employee';
 import Productos from './pages/Productos/Productos';
+import NotFound from './pages/NotFound/NotFound';
 import { products } from './data/products';
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem('aktiva-cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [currentHash, setCurrentHash] = useState(window.location.hash.slice(1) || '/');
+
+  useEffect(() => {
+    localStorage.setItem('aktiva-cart', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -76,6 +88,7 @@ function App() {
         {currentHash === '/employee' && <Employee />}
         {currentHash === '/productos' && <Productos onAddToCart={handleAddToCart} />}
         {(currentHash === '/' || currentHash === '') && <Home onAddToCart={handleAddToCart} />}
+        {!['/login','/register','/about','/contact','/roles','/client','/employee','/productos','/','' ].includes(currentHash) && <NotFound />}
       </main>
       {!hideHeaderFooter && (
         <>

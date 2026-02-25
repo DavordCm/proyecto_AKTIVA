@@ -1,4 +1,5 @@
-import React from 'react';
+import { GiWheat } from 'react-icons/gi';
+import { FiZap, FiGlobe, FiHeart, FiAward, FiUsers, FiActivity } from 'react-icons/fi';
 import styles from './AboutUs.module.css';
 
 function AboutUs() {
@@ -32,22 +33,22 @@ function AboutUs() {
           <h2>¿Por qué AKTIVA?</h2>
           <ul className={styles.features}>
             <li>
-              <span className={styles.icon}>🌾</span>
+              <span className={styles.icon}><GiWheat size={32} /></span>
               <strong>Ingredientes 100% Naturales</strong>
               <p>Utilizamos solo ingredientes andinos auténticos y de alta calidad</p>
             </li>
             <li>
-              <span className={styles.icon}>⚡</span>
+              <span className={styles.icon}><FiZap size={32} /></span>
               <strong>Energía Sostenida</strong>
               <p>Sin azúcar refinado, proporciona energía duradera y estable</p>
             </li>
             <li>
-              <span className={styles.icon}>🌍</span>
+              <span className={styles.icon}><FiGlobe size={32} /></span>
               <strong>Sostenibilidad</strong>
               <p>Apoyamos a productores locales y prácticas agrícolas responsables</p>
             </li>
             <li>
-              <span className={styles.icon}>❤️</span>
+              <span className={styles.icon}><FiHeart size={32} /></span>
               <strong>Salud Integral</strong>
               <p>Ricas en vitaminas, minerales y proteína natural</p>
             </li>
@@ -58,19 +59,23 @@ function AboutUs() {
           <h2>Nuestros Valores</h2>
           <div className={styles.values}>
             <div className={styles.valueCard}>
-              <h3>🎯 Calidad</h3>
+              <span className={styles.valueIcon}><FiAward size={28} /></span>
+              <h3>Calidad</h3>
               <p>Cada barra es cuidadosamente elaborada con los mejores ingredientes</p>
             </div>
             <div className={styles.valueCard}>
-              <h3>🤝 Comunidad</h3>
+              <span className={styles.valueIcon}><FiUsers size={28} /></span>
+              <h3>Comunidad</h3>
               <p>Trabajamos directamente con productores andinos para asegurar prácticas justas</p>
             </div>
             <div className={styles.valueCard}>
-              <h3>🌱 Sostenibilidad</h3>
+              <span className={styles.valueIcon}><FiGlobe size={28} /></span>
+              <h3>Sostenibilidad</h3>
               <p>Nuestro compromiso es con el planeta y las generaciones futuras</p>
             </div>
             <div className={styles.valueCard}>
-              <h3>💪 Salud</h3>
+              <span className={styles.valueIcon}><FiActivity size={28} /></span>
+              <h3>Salud</h3>
               <p>Promovemos un estilo de vida activo y saludable con nutrición natural</p>
             </div>
           </div>

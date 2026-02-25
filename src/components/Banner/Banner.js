@@ -5,8 +5,7 @@ import styles from './Banner.module.css';
 
 function Banner() {
   const scrollToProducts = () => {
-    const section = document.getElementById('products-section');
-    if (section) section.scrollIntoView({ behavior: 'smooth' });
+    window.location.hash = '#/productos';
   };
 
   return (
@@ -32,8 +31,8 @@ function Banner() {
 
           <div className={styles.certifications}>
             <img src={`${process.env.PUBLIC_URL}/usda.png`} alt="USDA Organic" className={styles.certImg} />
-            <img src={`${process.env.PUBLIC_URL}/natural.webp`} alt="100% Natural" className={styles.certImg} />
-            <img src={`${process.env.PUBLIC_URL}/descarga (14).png`} alt="HACCP Certified" className={styles.certImg} />
+            <img src={`${process.env.PUBLIC_URL}/haccp.png.jpg`} alt="Certificación" className={styles.certImg} />
+            <img src={`${process.env.PUBLIC_URL}/descarga (15).png`} alt="Certificación" className={styles.certImg} />
           </div>
         </div>
 
@@ -73,9 +72,6 @@ function Banner() {
 
       </div>
 
-      <div className={styles.scrollIndicator}>
-        <span></span>
-      </div>
     </section>
   );
 }

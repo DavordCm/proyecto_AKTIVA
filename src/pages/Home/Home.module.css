@@ -2,67 +2,164 @@
   min-height: 100vh;
 }
 
-.features {
-  padding: 4rem 1rem;
-  background: linear-gradient(135deg, #FBF9F6 0%, #E8DDD1 100%);
+/* ── Sección genérica ─────────────────────────── */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.container {
-  max-width: 1200px;
+.sectionHeader h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #5C4A3D;
+  margin: 0 0 0.5rem 0;
+}
+
+.sectionHeader p {
+  color: #8B7355;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* ── Productos Destacados ─────────────────────── */
+.featured {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #FBF9F6 0%, #EDE7DF 100%);
+}
+
+.featuredGrid {
+  max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-.featureCard {
+.featuredFooter {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.verTodos {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #8B7355, #9CBF88);
+  color: white;
+  text-decoration: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 16px rgba(139, 115, 85, 0.35);
+}
+
+.verTodos:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(139, 115, 85, 0.45);
+}
+
+/* ── Por qué AKTIVA ───────────────────────────── */
+.why {
+  padding: 5rem 2rem;
+  background: #fff;
+}
+
+.whyGrid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.whyCard {
   text-align: center;
   padding: 2.5rem 1.5rem;
-  background: white;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  border-left: 4px solid #8B7355;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: #FBF9F6;
+  border-radius: 16px;
+  border-bottom: 4px solid #8B7355;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
-.featureCard:hover {
+.whyCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(139, 115, 85, 0.15);
-  border-left-color: #9CBF88;
+  box-shadow: 0 12px 28px rgba(139, 115, 85, 0.18);
+  border-color: #9CBF88;
 }
 
-.icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.featureCard h3 {
-  margin: 1rem 0 0.5rem 0;
-  color: #5C4A3D;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.featureCard p {
-  margin: 0;
+.whyIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #EDE7DF, #d4c8b8);
   color: #8B7355;
-  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
 }
 
+.whyCard h3 {
+  color: #5C4A3D;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem 0;
+}
+
+.whyCard p {
+  color: #8B7355;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Franja Ingredientes ──────────────────────── */
+.ingredients {
+  background: linear-gradient(135deg, #8B7355 0%, #9CBF88 100%);
+  padding: 1.5rem 2rem;
+}
+
+.ingredientsInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.ingredientTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.divider {
+  color: rgba(255,255,255,0.5);
+  font-size: 1.2rem;
+}
+
+/* ── Responsive ───────────────────────────────── */
 @media (max-width: 768px) {
-  .features {
-    padding: 2rem 1rem;
+  .featured,
+  .why {
+    padding: 3rem 1rem;
   }
 
-  .container {
-    gap: 1.5rem;
+  .sectionHeader h2 {
+    font-size: 1.6rem;
   }
 
-  .featureCard {
-    padding: 1.5rem 1rem;
-  }
-
-  .icon {
-    font-size: 2.5rem;
+  .featuredGrid,
+  .whyGrid {
+    grid-template-columns: 1fr;
   }
 }
