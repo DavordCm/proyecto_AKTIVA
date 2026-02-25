@@ -5,9 +5,13 @@ function ProductCard({ product, onAddToCart }) {
   return (
     <div className={styles.card}>
       <div className={styles.imageContainer}>
-        <div className={styles.emojiContainer}>
-          {product.emoji}
-        </div>
+        {product.image ? (
+          <img src={product.image} alt={product.name} className={styles.productImg} />
+        ) : (
+          <div className={styles.emojiContainer}>
+            {product.emoji}
+          </div>
+        )}
       </div>
 
       <div className={styles.content}>

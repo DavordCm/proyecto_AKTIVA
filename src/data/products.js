@@ -5,7 +5,8 @@ export const products = [
     description: 'Barra de energía con kiwicha, plátano y tarwi. Alta en proteína y hierro',
     flavor: 'Kiwicha',
     price: 8.50,
-    emoji: '🌾'
+    emoji: '🌾',
+    image: '/granola.jpg'
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ export const products = [
     description: 'Barra energética con quinoa real y almendras. Fuente de proteína natural',
     flavor: 'Quinoa',
     price: 9.50,
-    emoji: '🥜'
+    emoji: '🥜',
+    image: '/granola.jpg'
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ export const products = [
     description: 'Energía combinada con maca peruana y cacao. Sin azúcar añadida',
     flavor: 'Maca',
     price: 9.00,
-    emoji: '🍫'
+    emoji: '🍫',
+    image: '/granola.jpg'
   },
   {
     id: 4,
@@ -29,7 +32,8 @@ export const products = [
     description: 'Barras con amaranto y avena integral. Fibra y energía sostenida',
     flavor: 'Amaranto',
     price: 7.50,
-    emoji: '🌾'
+    emoji: '🌾',
+    image: '/granola.jpg'
   },
   {
     id: 5,
@@ -37,7 +41,8 @@ export const products = [
     description: 'Barra de energía con semillas de chía y coco. Omega-3 natural',
     flavor: 'Chía',
     price: 8.50,
-    emoji: '🥥'
+    emoji: '🥥',
+    image: '/granola.jpg'
   },
   {
     id: 6,
@@ -45,7 +50,8 @@ export const products = [
     description: 'Energy bar auténtico con lúcuma peruana y arándanos. Antioxidantes',
     flavor: 'Lúcuma',
     price: 8.50,
-    emoji: '🫐'
+    emoji: '🫐',
+    image: '/granola.jpg'
   },
   {
     id: 7,
@@ -53,7 +59,8 @@ export const products = [
     description: 'Caja con 6 barras surtidas de diferentes sabores. Prueba todo el rango',
     flavor: 'Variado',
     price: 45.00,
-    emoji: '📦'
+    emoji: '📦',
+    image: '/granola.jpg'
   },
   {
     id: 8,
@@ -61,7 +68,8 @@ export const products = [
     description: 'Caja premium con 12 barras variadas. Ideal para regalo o consumo personal',
     flavor: 'Variado',
     price: 85.00,
-    emoji: '🎁'
+    emoji: '🎁',
+    image: '/granola.jpg'
   },
   {
     id: 9,
@@ -69,7 +77,8 @@ export const products = [
     description: 'Barra con kiwicha y sésamo. Alto contenido proteico y mineral',
     flavor: 'Kiwicha',
     price: 9.00,
-    emoji: '🌱'
+    emoji: '🌱',
+    image: '/granola.jpg'
   },
   {
     id: 10,
@@ -77,7 +86,8 @@ export const products = [
     description: 'Energy bar con granola artesanal y miel de abeja. Energía rápida',
     flavor: 'Granola',
     price: 8.00,
-    emoji: '🍯'
+    emoji: '🍯',
+    image: '/granola.jpg'
   },
   {
     id: 11,
@@ -85,7 +95,8 @@ export const products = [
     description: 'Pack de 12 barras con proteína optimizada. Alto en fibra, bajo en calorías',
     flavor: 'Mix',
     price: 95.00,
-    emoji: '💪'
+    emoji: '💪',
+    image: '/granola.jpg'
   },
   {
     id: 12,
@@ -93,6 +104,7 @@ export const products = [
     description: 'Barra con teff y jengibre. Energía andina con beneficios digestivos',
     flavor: 'Teff',
     price: 9.50,
-    emoji: '🌶️'
+    emoji: '🌶️',
+    image: '/granola.jpg'
   }
 ];

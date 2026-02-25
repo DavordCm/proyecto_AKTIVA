@@ -63,6 +63,44 @@
   transform: translateY(0);
 }
 
+.certifications {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.certBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  min-width: 80px;
+  backdrop-filter: blur(4px);
+}
+
+.certIcon {
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
+}
+
+.certText {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.certSub {
+  font-size: 0.7rem;
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
