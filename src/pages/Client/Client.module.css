@@ -411,10 +411,23 @@
   font-weight: 600;
 }
 
+.totalAmtWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
 .totalAmt {
   font-size: 1.3rem;
   font-weight: 900;
   color: #FF8C42;
+}
+
+.totalSol {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #9B8E82;
 }
 
 .checkoutBtn {

@@ -151,7 +151,10 @@ function Client() {
                 <div className={styles.drawerFooter}>
                   <div className={styles.drawerTotal}>
                     <span>Total</span>
-                    <span className={styles.totalAmt}>$ {cartTotal.toFixed(2)}</span>
+                    <div className={styles.totalAmtWrap}>
+                      <span className={styles.totalAmt}>$ {cartTotal.toFixed(2)}</span>
+                      <span className={styles.totalSol}>S/ {(cartTotal * 3.31).toFixed(2)}</span>
+                    </div>
                   </div>
                   <button className={styles.checkoutBtn} onClick={() => {
                     localStorage.setItem('aktiva-checkout-cart', JSON.stringify(cart));
