@@ -29,11 +29,6 @@ function Banner() {
             <a href="#/about" className={styles.ctaSecondary}>Nuestra Historia</a>
           </div>
 
-          <div className={styles.certifications}>
-            <img src={`${process.env.PUBLIC_URL}/usda.png`} alt="USDA Organic" className={styles.certImg} />
-            <img src={`${process.env.PUBLIC_URL}/haccp.png.jpg`} alt="Certificación" className={styles.certImg} />
-            <img src={`${process.env.PUBLIC_URL}/descarga (15).png`} alt="Certificación" className={styles.certImg} />
-          </div>
         </div>
 
         <div className={styles.right}>

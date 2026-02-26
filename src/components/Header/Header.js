@@ -45,7 +45,9 @@ function Header({ cartItems = [], onRemoveFromCart, onQuantityChange, products =
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <img src="/76ea0096-92e0-4209-9217-f2af6909b3cd.jpg" alt="AKTIVA Logo" className={styles.logoImg} />
+          <a href="#/">
+            <img src="/a93cb6ff-4b3d-4dbb-88ea-fe8ca6ae5d86.png" alt="AKTIVA Logo" className={styles.logoImg} />
+          </a>
         </div>
 
         <button className={styles.menuToggle} onClick={() => setMenuOpen(!menuOpen)}>
