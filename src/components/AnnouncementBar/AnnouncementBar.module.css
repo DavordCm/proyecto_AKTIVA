@@ -64,9 +64,9 @@
 }
 
 .fairLogo {
-  height: 28px;
-  width: auto;
-  object-fit: contain;
+  width: 200px;
+  height: auto;
+  display: block;
   filter: brightness(0) invert(1);
   flex-shrink: 0;
 }

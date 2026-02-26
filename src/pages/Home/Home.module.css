@@ -23,8 +23,8 @@
 
 /* ── Banner Summer Fancy Food Show ───────────── */
 .fairBanner {
-  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 60%, #0F3460 100%);
-  padding: 3.5rem 2rem;
+  background: #fff;
+  padding: 4rem 2rem;
 }
 
 .fairBannerInner {
@@ -35,6 +35,11 @@
   justify-content: space-between;
   gap: 3rem;
   flex-wrap: wrap;
+  background: linear-gradient(135deg, #3D2200 0%, #7A4500 50%, #C47A00 100%);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  padding: 3.5rem 4rem;
 }
 
 .fairBannerText {
@@ -79,15 +84,27 @@
 }
 
 .fairBannerLogo {
-  flex-shrink: 0;
-}
-
-.fairBannerLogo img {
-  height: 80px;
+  height: 50px;
   width: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
-  opacity: 0.92;
+  opacity: 0.9;
+  margin-top: 1.5rem;
+}
+
+.fairCityBox {
+  flex-shrink: 0;
+  width: 280px;
+  height: 280px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.fairCityBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (max-width: 700px) {
@@ -99,8 +116,12 @@
   .fairDetails {
     align-items: center;
   }
-  .fairBannerLogo img {
-    height: 55px;
+  .fairCityBox {
+    width: 100%;
+    height: 200px;
+  }
+  .fairBannerLogo {
+    height: 40px;
   }
 }
 

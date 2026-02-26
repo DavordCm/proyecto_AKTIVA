@@ -140,11 +140,16 @@ function Home({ onAddToCart }) {
               <span>📅 28 – 30 de junio 2026</span>
               <span>📍 Javits Center, New York, EEUU</span>
             </div>
-          </div>
-          <div className={styles.fairBannerLogo}>
             <img
               src={`${process.env.PUBLIC_URL}/SFFS23_lockup_horz3-3-1024x297-1.png`}
               alt="Summer Fancy Food Show 2026"
+              className={styles.fairBannerLogo}
+            />
+          </div>
+          <div className={styles.fairCityBox}>
+            <img
+              src={`${process.env.PUBLIC_URL}/mek.webp`}
+              alt="New York City"
             />
           </div>
         </div>
