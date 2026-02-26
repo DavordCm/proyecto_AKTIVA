@@ -63,6 +63,14 @@
   font-weight: 800;
 }
 
+.fairLogo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+
 .iconInline {
   opacity: 0.85;
   flex-shrink: 0;

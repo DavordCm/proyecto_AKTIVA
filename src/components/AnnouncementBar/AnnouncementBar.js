@@ -13,6 +13,11 @@ function AnnouncementBar() {
         <span className={styles.badge}>
           <FiStar size={10} className={styles.badgeIcon} /> ¡NOTICIAS!
         </span>
+        <img
+          src={`${process.env.PUBLIC_URL}/SFFS23_lockup_horz3-3-1024x297-1.png`}
+          alt="Summer Fancy Food Show"
+          className={styles.fairLogo}
+        />
         <span className={styles.text}>
           AKTIVA Energy participará en la&nbsp;
           <strong>Summer Fancy Food Show 2026</strong>
@@ -21,7 +26,7 @@ function AnnouncementBar() {
           28 al 30 de junio
           &nbsp;·&nbsp;
           <FiMapPin size={13} className={styles.iconInline} />
-          Lima, Perú
+          New York, EEUU
         </span>
         <span className={styles.cta}>¡Ven a conocernos!</span>
       </div>

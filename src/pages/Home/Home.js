@@ -127,6 +127,29 @@ function Home({ onAddToCart }) {
     <div className={styles.home}>
       <Banner />
 
+      {/* Banner Summer Fancy Food Show */}
+      <section className={styles.fairBanner}>
+        <div className={styles.fairBannerInner}>
+          <div className={styles.fairBannerText}>
+            <span className={styles.fairTag}>¡Próximamente!</span>
+            <h2>Nos vemos en Nueva York</h2>
+            <p>
+              AKTIVA Energy estará presente en la feria internacional de alimentos especializados más importante del mundo.
+            </p>
+            <div className={styles.fairDetails}>
+              <span>📅 28 – 30 de junio 2026</span>
+              <span>📍 Javits Center, New York, EEUU</span>
+            </div>
+          </div>
+          <div className={styles.fairBannerLogo}>
+            <img
+              src={`${process.env.PUBLIC_URL}/SFFS23_lockup_horz3-3-1024x297-1.png`}
+              alt="Summer Fancy Food Show 2026"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Certificaciones */}
       <section className={styles.certs}>
         <div className={styles.sectionHeader}>
