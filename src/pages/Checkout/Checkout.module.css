@@ -1,0 +1,418 @@
+/* ── Contenedor principal ──────────────────────── */
+.container {
+  min-height: 100vh;
+  background: #F4F1ED;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 960px;
+  align-items: flex-start;
+}
+
+/* ── Columna izquierda: Resumen ─────────────────── */
+.summary {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  position: sticky;
+  top: 2rem;
+}
+
+.back {
+  background: none;
+  border: none;
+  color: #8B7355;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+.back:hover { color: #5C4A3D; }
+
+.summaryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #5C4A3D;
+  margin-bottom: 1.25rem;
+}
+.summaryHeader h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.emptyMsg {
+  color: #aaa;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.itemEmoji {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  background: #FBF9F6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.itemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.itemName {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #5C4A3D;
+}
+
+.itemQty {
+  font-size: 0.78rem;
+  color: #8B7355;
+}
+
+.itemPrice {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #5C4A3D;
+  white-space: nowrap;
+}
+
+.totals {
+  border-top: 1px solid #F0EBE4;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #5C4A3D;
+}
+
+.freeShip {
+  color: #9CBF88;
+  font-weight: 700;
+}
+
+.grandTotal {
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-top: 1px solid #F0EBE4;
+  padding-top: 0.75rem;
+  margin-top: 0.25rem;
+  color: #5C4A3D;
+}
+
+/* ── Columna derecha: Pago ──────────────────────── */
+.payment {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #5C4A3D;
+  margin: 0 0 0.3rem 0;
+}
+
+.sub {
+  color: #8B7355;
+  font-size: 0.92rem;
+  margin: 0 0 1.75rem 0;
+}
+
+/* ── Métodos ────────────────────────────────────── */
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.75rem;
+}
+
+.methodBtn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border: 2px solid #EDE7DF;
+  border-radius: 14px;
+  background: white;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: inherit;
+}
+
+.methodBtn:hover {
+  border-color: #FF8C42;
+  background: #FFFAF6;
+}
+
+.methodActive {
+  border-color: #FF8C42;
+  background: #FFFAF6;
+}
+
+.methodIcon { font-size: 1.4rem; flex-shrink: 0; }
+
+.methodInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.methodInfo strong { color: #5C4A3D; font-size: 0.95rem; }
+.methodInfo small  { color: #8B7355; font-size: 0.78rem; }
+
+.methodDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  flex-shrink: 0;
+  transition: border-color 0.2s, background 0.2s;
+}
+.methodDotOn {
+  border-color: #FF8C42;
+  background: #FF8C42;
+}
+
+/* ── Formularios ────────────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #5C4A3D;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.3px;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #EDE7DF;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #5C4A3D;
+  background: #FDFCFB;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B7355' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: #FF8C42;
+  box-shadow: 0 0 0 3px rgba(255,140,66,0.12);
+}
+
+.cardRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.cardField { display: flex; flex-direction: column; }
+
+.cardBrands {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.brand {
+  font-size: 0.72rem;
+  font-weight: 900;
+  background: #F4F1ED;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Yape card ──────────────────────────────────── */
+.yapeCard {
+  background: linear-gradient(135deg, #7B2FBE 0%, #9B59D4 100%);
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.yapeLogo { font-size: 2rem; margin-bottom: 0.5rem; }
+.yapeLabel { font-size: 0.82rem; opacity: 0.85; margin: 0 0 0.25rem; }
+.yapeNum { font-size: 1.5rem; font-weight: 900; margin: 0; letter-spacing: 1px; }
+
+/* ── PayPal card ─────────────────────────────────── */
+.paypalCard {
+  background: linear-gradient(135deg, #003087 0%, #009cde 100%);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.paypalLogo { font-size: 1.3rem; font-style: italic; white-space: nowrap; }
+.paypalCard p { margin: 0; font-size: 0.85rem; opacity: 0.9; }
+
+/* ── Botón pagar ─────────────────────────────────── */
+.payBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #FF8C42 0%, #E07B2E 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  margin-top: 0.5rem;
+  letter-spacing: 0.3px;
+}
+.payBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255,140,66,0.4);
+}
+
+.secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  color: #bbb;
+  font-size: 0.78rem;
+  margin-top: 1rem;
+}
+
+/* ── Éxito ───────────────────────────────────────── */
+.successBox {
+  background: white;
+  border-radius: 20px;
+  padding: 4rem 2.5rem;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+
+.successIconWrap {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #9CBF88, #7aab64);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+}
+
+.successBox h2 {
+  color: #5C4A3D;
+  font-size: 1.8rem;
+  margin: 0 0 0.75rem;
+}
+
+.successBox p {
+  color: #8B7355;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 2rem;
+}
+
+.backHome {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF8C42, #E07B2E);
+  color: white;
+  text-decoration: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 800;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.backHome:hover {
+  box-shadow: 0 8px 20px rgba(255,140,66,0.4);
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 720px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+  .summary {
+    position: static;
+  }
+  .cardRow {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cardRow .cardField:last-child {
+    grid-column: 1 / -1;
+  }
+}

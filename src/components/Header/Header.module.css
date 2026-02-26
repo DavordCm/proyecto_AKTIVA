@@ -24,9 +24,10 @@
 }
 
 .logoImg {
-  height: 60px;
+  height: 85px;
   width: auto;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 .nav {
@@ -436,7 +437,7 @@
   }
 
   .logoImg {
-    height: 50px;
+    height: 65px;
   }
 
   .icons {

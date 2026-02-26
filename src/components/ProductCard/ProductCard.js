@@ -32,7 +32,7 @@ function ProductCard({ product, onAddToCart }) {
           </div>
           <button
             className={styles.button}
-            onClick={() => onAddToCart(product)}
+            onClick={() => { window.location.hash = '#/iniciar-sesion'; }}
           >
             <FiShoppingCart size={15} /> Agregar
           </button>

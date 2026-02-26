@@ -1,141 +1,173 @@
 import React, { useState } from 'react';
-import styles from './Client.module.css';
+import { FiSearch, FiShoppingCart, FiLogOut, FiPlus, FiMinus, FiTrash2, FiX } from 'react-icons/fi';
 import { products } from '../../data/products';
+import styles from './Client.module.css';
 
-function Client({ onAddToCart }) {
-  const [cart, setCart] = useState([]);
-  const [showCart, setShowCart] = useState(false);
+function Client() {
+  const [cart, setCart]             = useState([]);
+  const [cartOpen, setCartOpen]     = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [activeFilter, setActiveFilter] = useState('Todos');
 
-  const handleAddToCart = (product) => {
-    const existingItem = cart.find(item => item.id === product.id);
-    if (existingItem) {
-      setCart(cart.map(item =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      ));
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
+  const flavors = ['Todos', ...new Set(products.map(p => p.flavor))];
+
+  const filtered = products.filter(p => {
+    const matchSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchFilter = activeFilter === 'Todos' || p.flavor === activeFilter;
+    return matchSearch && matchFilter;
+  });
+
+  const cartCount = cart.reduce((sum, i) => sum + i.quantity, 0);
+  const cartTotal = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+
+  const addToCart = (product) => {
+    setCart(prev => {
+      const existing = prev.find(i => i.id === product.id);
+      if (existing) return prev.map(i => i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i);
+      return [...prev, { ...product, quantity: 1 }];
+    });
   };
 
-  const handleRemoveFromCart = (productId) => {
-    setCart(cart.filter(item => item.id !== productId));
+  const changeQty = (id, qty) => {
+    if (qty <= 0) setCart(prev => prev.filter(i => i.id !== id));
+    else setCart(prev => prev.map(i => i.id === id ? { ...i, quantity: qty } : i));
   };
-
-  const handleQuantityChange = (productId, quantity) => {
-    if (quantity <= 0) {
-      handleRemoveFromCart(productId);
-    } else {
-      setCart(cart.map(item =>
-        item.id === productId
-          ? { ...item, quantity }
-          : item
-      ));
-    }
-  };
-
-  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
-    <div className={styles.clientContainer}>
-      <div className={styles.header}>
-        <h1>🛍️ Tienda AKTIVA</h1>
-        <p>Descubre nuestras barras de energía nutritivas</p>
-        <button
-          className={styles.cartBtn}
-          onClick={() => setShowCart(!showCart)}
-        >
-          🛒 Mi Carrito ({cart.length})
-        </button>
+    <div className={styles.container}>
+
+      {/* ── Navbar ── */}
+      <header className={styles.navbar}>
+        <a href="#/">
+          <img src="/a93cb6ff-4b3d-4dbb-88ea-fe8ca6ae5d86.png" alt="AKTIVA" className={styles.navLogo} />
+        </a>
+        <div className={styles.navActions}>
+          <button className={styles.cartIcon} onClick={() => setCartOpen(true)}>
+            <FiShoppingCart size={20} />
+            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+          </button>
+          <button className={styles.logoutBtn} onClick={() => { window.location.hash = '#/'; }}>
+            <FiLogOut size={16} /> Salir
+          </button>
+        </div>
+      </header>
+
+      {/* ── Banner ── */}
+      <div className={styles.banner}>
+        <h1>Tienda AKTIVA</h1>
+        <p>Barras energéticas con superalimentos andinos 100% naturales</p>
       </div>
 
-      <div className={styles.mainContent}>
-        {showCart ? (
-          <div className={styles.cartSection}>
-            <h2>Mi Carrito de Compras</h2>
-            {cart.length === 0 ? (
-              <div className={styles.emptyCart}>
-                <p>Tu carrito está vacío</p>
-                <button
-                  className={styles.continueBtn}
-                  onClick={() => setShowCart(false)}
-                >
-                  Continuar Comprando
+      {/* ── Controles ── */}
+      <div className={styles.controls}>
+        <div className={styles.searchBox}>
+          <FiSearch size={17} className={styles.searchIcon} />
+          <input
+            type="text"
+            placeholder="Buscar producto..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            className={styles.searchInput}
+          />
+        </div>
+        <div className={styles.filters}>
+          {flavors.map(f => (
+            <button
+              key={f}
+              className={`${styles.filterBtn} ${activeFilter === f ? styles.active : ''}`}
+              onClick={() => setActiveFilter(f)}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.results}>
+        <span>{filtered.length} producto{filtered.length !== 1 ? 's' : ''}</span>
+      </div>
+
+      {/* ── Grid ── */}
+      <div className={styles.grid}>
+        {filtered.map(product => (
+          <div key={product.id} className={styles.card}>
+            <div className={styles.cardImg}>
+              {product.image
+                ? <img src={product.image} alt={product.name} />
+                : <span className={styles.emoji}>{product.emoji}</span>}
+            </div>
+            <div className={styles.cardBody}>
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              {product.flavor && <span className={styles.flavorBadge}>{product.flavor}</span>}
+              <div className={styles.cardFooter}>
+                <div className={styles.price}>
+                  $ {product.price.toFixed(2)}
+                  <span className={styles.priceAlt}>≈ S/ {(product.price * 3.31).toFixed(2)}</span>
+                </div>
+                <button className={styles.addBtn} onClick={() => addToCart(product)}>
+                  <FiShoppingCart size={14} /> Agregar
                 </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ── Drawer carrito ── */}
+      {cartOpen && (
+        <div className={styles.overlay} onClick={() => setCartOpen(false)}>
+          <div className={styles.drawer} onClick={e => e.stopPropagation()}>
+            <div className={styles.drawerHeader}>
+              <h2>Mi Carrito</h2>
+              <button className={styles.closeDrawer} onClick={() => setCartOpen(false)}><FiX size={20} /></button>
+            </div>
+
+            {cart.length === 0 ? (
+              <div className={styles.empty}>
+                <FiShoppingCart size={40} style={{ opacity: 0.3 }} />
+                <p>Tu carrito está vacío</p>
               </div>
             ) : (
               <>
-                <div className={styles.cartItems}>
+                <div className={styles.drawerItems}>
                   {cart.map(item => (
-                    <div key={item.id} className={styles.cartItem}>
-                      <div className={styles.itemInfo}>
-                        <h4>{item.name}</h4>
-                        <p>$ {item.price.toFixed(2)}</p>
+                    <div key={item.id} className={styles.drawerItem}>
+                      <span className={styles.drawerEmoji}>{item.emoji}</span>
+                      <div className={styles.drawerInfo}>
+                        <p className={styles.drawerName}>{item.name}</p>
+                        <p className={styles.drawerPrice}>$ {item.price.toFixed(2)}</p>
                       </div>
-                      <div className={styles.itemControls}>
-                        <button onClick={() => handleQuantityChange(item.id, item.quantity - 1)}>-</button>
-                        <input
-                          type="number"
-                          value={item.quantity}
-                          onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value) || 1)}
-                          min="1"
-                        />
-                        <button onClick={() => handleQuantityChange(item.id, item.quantity + 1)}>+</button>
+                      <div className={styles.qty}>
+                        <button onClick={() => changeQty(item.id, item.quantity - 1)}><FiMinus size={12} /></button>
+                        <span>{item.quantity}</span>
+                        <button onClick={() => changeQty(item.id, item.quantity + 1)}><FiPlus size={12} /></button>
                       </div>
-                      <div className={styles.itemTotal}>
-                        $ {(item.price * item.quantity).toFixed(2)}
-                      </div>
-                      <button
-                        className={styles.removeBtn}
-                        onClick={() => handleRemoveFromCart(item.id)}
-                      >
-                        ✕
-                      </button>
+                      <button className={styles.removeItem} onClick={() => changeQty(item.id, 0)}><FiTrash2 size={14} /></button>
                     </div>
                   ))}
                 </div>
-                <div className={styles.cartSummary}>
-                  <div className={styles.totalRow}>
-                    <span>Total:</span>
-                    <span className={styles.totalPrice}>$ {total.toFixed(2)}</span>
+                <div className={styles.drawerFooter}>
+                  <div className={styles.drawerTotal}>
+                    <span>Total</span>
+                    <span className={styles.totalAmt}>$ {cartTotal.toFixed(2)}</span>
                   </div>
-                  <button className={styles.checkoutBtn}>Proceder al Pago</button>
-                  <button
-                    className={styles.continueBtn}
-                    onClick={() => setShowCart(false)}
-                  >
-                    Continuar Comprando
+                  <button className={styles.checkoutBtn} onClick={() => {
+                    localStorage.setItem('aktiva-checkout-cart', JSON.stringify(cart));
+                    window.location.hash = '#/pago';
+                  }}>
+                    Proceder al Pago
+                  </button>
+                  <button className={styles.continueBtn} onClick={() => setCartOpen(false)}>
+                    Continuar comprando
                   </button>
                 </div>
               </>
             )}
           </div>
-        ) : (
-          <div className={styles.productsSection}>
-            <h2>Nuestros Productos</h2>
-            <div className={styles.productGrid}>
-              {products.map(product => (
-                <div key={product.id} className={styles.productCard}>
-                  <div className={styles.productEmoji}>{product.emoji}</div>
-                  <h3>{product.name}</h3>
-                  <p className={styles.description}>{product.description}</p>
-                  <div className={styles.flavor}>Sabor: {product.flavor}</div>
-                  <div className={styles.priceSection}>
-                    <span className={styles.price}>$ {product.price.toFixed(2)}</span>
-                    <button
-                      className={styles.addBtn}
-                      onClick={() => handleAddToCart(product)}
-                    >
-                      Añadir al Carrito
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

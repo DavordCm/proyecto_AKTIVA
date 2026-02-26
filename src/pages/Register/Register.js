@@ -92,7 +92,7 @@ function Register() {
         </form>
 
         <div className={styles.footer}>
-          <p>¿Ya tienes cuenta? <a href="#/login">Inicia sesión aquí</a></p>
+          <p>¿Ya tienes cuenta? <a href="#/iniciar-sesion">Inicia sesión aquí</a></p>
           <p><a href="#/">Volver a inicio</a></p>
         </div>
       </div>

@@ -28,7 +28,12 @@ function AnnouncementBar() {
           <FiMapPin size={13} className={styles.iconInline} />
           New York, EEUU
         </span>
-        <span className={styles.cta}>¡Ven a conocernos!</span>
+        <a
+          href="https://www.specialtyfood.com/fancy-food-shows/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.cta}
+        >¡Ven a conocernos!</a>
       </div>
       <button className={styles.close} onClick={() => setVisible(false)} aria-label="Cerrar">
         <FiX size={16} />

@@ -19,7 +19,7 @@ function RoleSelector() {
               <li>📋 Visualizar pedidos</li>
               <li>⚠️ Alertas de stock bajo</li>
             </ul>
-            <a href="#/employee" className={styles.btn}>
+            <a href="#/empleado" className={styles.btn}>
               Acceder como Empleado
             </a>
           </div>
@@ -34,7 +34,7 @@ function RoleSelector() {
               <li>💰 Proceso de pago seguro</li>
               <li>📦 Seguimiento de pedidos</li>
             </ul>
-            <a href="#/client" className={styles.btn}>
+            <a href="#/cliente" className={styles.btn}>
               Acceder como Cliente
             </a>
           </div>

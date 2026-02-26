@@ -26,7 +26,7 @@ function Banner() {
 
           <div className={styles.buttons}>
             <button className={styles.ctaPrimary} onClick={scrollToProducts}>Descubre Nuestras Barras</button>
-            <a href="#/about" className={styles.ctaSecondary}>Nuestra Historia</a>
+            <a href="#/nosotros" className={styles.ctaSecondary}>Nuestra Historia</a>
           </div>
 
         </div>

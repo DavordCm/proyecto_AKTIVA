@@ -13,6 +13,7 @@ import RoleSelector from './pages/RoleSelector/RoleSelector';
 import Client from './pages/Client/Client';
 import Employee from './pages/Employee/Employee';
 import Productos from './pages/Productos/Productos';
+import Checkout from './pages/Checkout/Checkout';
 import NotFound from './pages/NotFound/NotFound';
 import { products } from './data/products';
 
@@ -67,30 +68,28 @@ function App() {
     }
   };
 
-  const hideHeaderFooter = ['/login', '/register', '/roles', '/client', '/employee'].includes(currentHash);
+  const handleClearCart = () => setCartItems([]);
+
+  const hideHeaderFooter = ['/iniciar-sesion', '/registrarse', '/roles', '/cliente', '/empleado', '/pago'].includes(currentHash);
 
   return (
     <div className="App">
       {!hideHeaderFooter && <AnnouncementBar />}
       {!hideHeaderFooter && (
-        <Header
-          cartItems={cartItems}
-          products={products}
-          onRemoveFromCart={handleRemoveFromCart}
-          onQuantityChange={handleQuantityChange}
-        />
+        <Header products={products} />
       )}
       <main className="main-content">
-        {currentHash === '/login' && <Login />}
-        {currentHash === '/register' && <Register />}
-        {currentHash === '/about' && <AboutUs />}
-        {currentHash === '/contact' && <Contact />}
-        {currentHash === '/roles' && <RoleSelector />}
-        {currentHash === '/client' && <Client onAddToCart={handleAddToCart} />}
-        {currentHash === '/employee' && <Employee />}
-        {currentHash === '/productos' && <Productos onAddToCart={handleAddToCart} />}
+        {currentHash === '/iniciar-sesion' && <Login />}
+        {currentHash === '/registrarse'    && <Register />}
+        {currentHash === '/nosotros'       && <AboutUs />}
+        {currentHash === '/contacto'       && <Contact />}
+        {currentHash === '/roles'          && <RoleSelector />}
+        {currentHash === '/cliente'        && <Client onAddToCart={handleAddToCart} />}
+        {currentHash === '/empleado'       && <Employee />}
+        {currentHash === '/productos'      && <Productos onAddToCart={handleAddToCart} />}
+        {currentHash === '/pago'           && <Checkout cartItems={cartItems} onClearCart={handleClearCart} />}
         {(currentHash === '/' || currentHash === '') && <Home onAddToCart={handleAddToCart} />}
-        {!['/login','/register','/about','/contact','/roles','/client','/employee','/productos','/','' ].includes(currentHash) && <NotFound />}
+        {!['/iniciar-sesion','/registrarse','/nosotros','/contacto','/roles','/cliente','/empleado','/productos','/pago','/','' ].includes(currentHash) && <NotFound />}
       </main>
       {!hideHeaderFooter && (
         <>
