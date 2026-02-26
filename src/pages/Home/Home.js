@@ -136,7 +136,14 @@ function Home({ onAddToCart }) {
             </p>
             <div className={styles.fairDetails}>
               <span>📅 28 – 30 de junio 2026</span>
-              <span>📍 Javits Center, New York, EEUU</span>
+              <a
+                href="https://www.google.com/maps/search/Javits+Center+429+11th+Ave+New+York+NY"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.fairMapLink}
+              >
+                📍 Javits Center, New York, EEUU
+              </a>
             </div>
             <img
               src={`${process.env.PUBLIC_URL}/SFFS23_lockup_horz3-3-1024x297-1.png`}
