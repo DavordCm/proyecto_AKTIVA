@@ -377,6 +377,13 @@
   text-align: center;
 }
 
+.qrEmailHint {
+  font-size: 0.78rem;
+  color: #9B8E82;
+  margin: -0.25rem 0 0.5rem;
+  text-align: center;
+}
+
 .qrImg {
   width: 180px;
   height: 180px;

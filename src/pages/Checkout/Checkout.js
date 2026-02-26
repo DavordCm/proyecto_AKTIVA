@@ -131,11 +131,6 @@ function Checkout({ cartItems = [], onClearCart }) {
           {/* ── Yape ── */}
           {method === 'yape' && (
             <form onSubmit={handlePay} className={styles.form}>
-              <div className={styles.yapeCard}>
-                <img src="/yape.png" alt="Yape" className={styles.yapeLogoImg} />
-                <p className={styles.yapeLabel}>Paga con Yape</p>
-                <p className={styles.yapeNum}>+51 952 839 291</p>
-              </div>
 
               {/* Pestañas Número / QR */}
               <div className={styles.yapeTabs}>
@@ -151,8 +146,14 @@ function Checkout({ cartItems = [], onClearCart }) {
                 >📷 QR</button>
               </div>
 
+              {/* ── Opción Número ── */}
               {yapeTab === 'numero' && (
                 <>
+                  <div className={styles.yapeCard}>
+                    <img src="/yape.png" alt="Yape" className={styles.yapeLogoImg} />
+                    <p className={styles.yapeLabel}>Yapea al número</p>
+                    <p className={styles.yapeNum}>+51 952 839 291</p>
+                  </div>
                   <label className={styles.label}>Tu número de celular</label>
                   <div className={styles.phoneWrap}>
                     <span className={styles.phonePrefix}>+51</span>
@@ -168,16 +169,26 @@ function Checkout({ cartItems = [], onClearCart }) {
                 </>
               )}
 
+              {/* ── Opción QR ── */}
               {yapeTab === 'qr' && (
-                <div className={styles.qrBox}>
-                  <div className={styles.qrPlaceholder}>
-                    <span className={styles.qrIcon}>▩</span>
-                    <p className={styles.qrHint}>Escanea con tu app Yape</p>
-                    <p className={styles.qrSub}>Abre Yape → Escanear QR</p>
+                <>
+                  <div className={styles.qrBox}>
+                    <div className={styles.qrPlaceholder}>
+                      <span className={styles.qrIcon}>▩</span>
+                      <p className={styles.qrHint}>Escanea con tu app Yape</p>
+                      <p className={styles.qrSub}>Abre Yape → Escanear QR</p>
+                    </div>
+                    {/* Reemplaza el div de arriba con: <img src="/tu-qr-yape.png" alt="QR Yape" className={styles.qrImg} /> */}
                   </div>
-                  {/* Reemplaza el div de arriba con: <img src="/tu-qr-yape.png" alt="QR Yape" className={styles.qrImg} /> */}
-                  <input type="hidden" value="qr" required />
-                </div>
+                  <label className={styles.label}>Correo para confirmación</label>
+                  <input
+                    className={styles.input}
+                    type="email"
+                    placeholder="tu@correo.com"
+                    required
+                  />
+                  <p className={styles.qrEmailHint}>Te enviaremos la confirmación de tu pago a este correo.</p>
+                </>
               )}
 
               <button type="submit" className={styles.payBtn}>
