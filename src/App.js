@@ -54,20 +54,6 @@ function App() {
     }
   };
 
-  const handleRemoveFromCart = (productId) => {
-    setCartItems(cartItems.filter(item => item.id !== productId));
-  };
-
-  const handleQuantityChange = (productId, quantity) => {
-    if (quantity <= 0) {
-      handleRemoveFromCart(productId);
-    } else {
-      setCartItems(cartItems.map(item =>
-        item.id === productId ? { ...item, quantity } : item
-      ));
-    }
-  };
-
   const handleClearCart = () => setCartItems([]);
 
   const hideHeaderFooter = ['/iniciar-sesion', '/registrarse', '/roles', '/cliente', '/empleado', '/pago'].includes(currentHash);

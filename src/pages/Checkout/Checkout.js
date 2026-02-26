@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FiCreditCard, FiChevronLeft, FiCheckCircle, FiLock, FiShoppingBag } from 'react-icons/fi';
 import styles from './Checkout.module.css';
 
@@ -10,6 +10,7 @@ function Checkout({ cartItems = [], onClearCart }) {
   const [done, setDone]     = useState(false);
   const [card, setCard]     = useState({ number: '', name: '', month: '', year: '', cvv: '' });
   const [yapePhone, setYapePhone]   = useState('');
+  const [yapeTab, setYapeTab]       = useState('numero');
   const [paypalEmail, setPaypalEmail] = useState('');
 
   // Leer carrito desde localStorage si el prop viene vacío (viene del Client)
@@ -21,6 +22,7 @@ function Checkout({ cartItems = [], onClearCart }) {
   const total    = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const subtotal = total;
   const shipping = 0;
+  const TC = 3.31; // tipo de cambio S/ por $
 
   const handlePay = (e) => {
     e.preventDefault();
@@ -69,7 +71,10 @@ function Checkout({ cartItems = [], onClearCart }) {
                   <span className={styles.itemName}>{item.name}</span>
                   <span className={styles.itemQty}>x{item.quantity}</span>
                 </div>
-                <span className={styles.itemPrice}>$ {(item.price * item.quantity).toFixed(2)}</span>
+                <div className={styles.itemPriceWrap}>
+                  <span className={styles.itemPrice}>$ {(item.price * item.quantity).toFixed(2)}</span>
+                  <span className={styles.itemPriceSol}>S/ {(item.price * item.quantity * TC).toFixed(2)}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -77,7 +82,10 @@ function Checkout({ cartItems = [], onClearCart }) {
           <div className={styles.totals}>
             <div className={styles.totalRow}>
               <span>Subtotal</span>
-              <span>$ {subtotal.toFixed(2)}</span>
+              <div className={styles.priceStack}>
+                <span>$ {subtotal.toFixed(2)}</span>
+                <span className={styles.sol}>S/ {(subtotal * TC).toFixed(2)}</span>
+              </div>
             </div>
             <div className={styles.totalRow}>
               <span>Envío</span>
@@ -85,7 +93,10 @@ function Checkout({ cartItems = [], onClearCart }) {
             </div>
             <div className={`${styles.totalRow} ${styles.grandTotal}`}>
               <span>Total</span>
-              <span>$ {(subtotal + shipping).toFixed(2)}</span>
+              <div className={styles.priceStack}>
+                <span>$ {(subtotal + shipping).toFixed(2)}</span>
+                <span className={styles.solBold}>S/ {((subtotal + shipping) * TC).toFixed(2)}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -97,9 +108,9 @@ function Checkout({ cartItems = [], onClearCart }) {
 
           <div className={styles.methods}>
             {[
-              { id: 'yape',   label: 'Yape',    icon: '💜', desc: 'Transferencia instantánea' },
-              { id: 'paypal', label: 'PayPal',  icon: '🅿️', desc: 'Pago internacional seguro' },
-              { id: 'card',   label: 'Tarjeta', icon: '💳', desc: 'Visa · Mastercard · Amex'  },
+              { id: 'yape',   label: 'Yape',    img: '/yape.png',     desc: 'Transferencia instantánea' },
+              { id: 'paypal', label: 'PayPal',  img: '/paypal.png',   desc: 'Pago internacional seguro' },
+              { id: 'card',   label: 'Tarjeta', img: '/pngwing.com.png', desc: 'Visa · Mastercard · Amex'  },
             ].map(m => (
               <button
                 key={m.id}
@@ -107,7 +118,7 @@ function Checkout({ cartItems = [], onClearCart }) {
                 className={`${styles.methodBtn} ${method === m.id ? styles.methodActive : ''}`}
                 onClick={() => setMethod(m.id)}
               >
-                <span className={styles.methodIcon}>{m.icon}</span>
+                <img src={m.img} alt={m.label} className={styles.methodLogo} />
                 <div className={styles.methodInfo}>
                   <strong>{m.label}</strong>
                   <small>{m.desc}</small>
@@ -121,21 +132,56 @@ function Checkout({ cartItems = [], onClearCart }) {
           {method === 'yape' && (
             <form onSubmit={handlePay} className={styles.form}>
               <div className={styles.yapeCard}>
-                <div className={styles.yapeLogo}>💜</div>
-                <p className={styles.yapeLabel}>Yapea al número</p>
+                <img src="/yape.png" alt="Yape" className={styles.yapeLogoImg} />
+                <p className={styles.yapeLabel}>Paga con Yape</p>
                 <p className={styles.yapeNum}>+51 952 839 291</p>
               </div>
-              <label className={styles.label}>Tu número de celular</label>
-              <input
-                className={styles.input}
-                type="tel"
-                placeholder="987 654 321"
-                value={yapePhone}
-                onChange={e => setYapePhone(e.target.value)}
-                required
-              />
+
+              {/* Pestañas Número / QR */}
+              <div className={styles.yapeTabs}>
+                <button
+                  type="button"
+                  className={`${styles.yapeTabBtn} ${yapeTab === 'numero' ? styles.yapeTabActive : ''}`}
+                  onClick={() => setYapeTab('numero')}
+                >📱 Número</button>
+                <button
+                  type="button"
+                  className={`${styles.yapeTabBtn} ${yapeTab === 'qr' ? styles.yapeTabActive : ''}`}
+                  onClick={() => setYapeTab('qr')}
+                >📷 QR</button>
+              </div>
+
+              {yapeTab === 'numero' && (
+                <>
+                  <label className={styles.label}>Tu número de celular</label>
+                  <div className={styles.phoneWrap}>
+                    <span className={styles.phonePrefix}>+51</span>
+                    <input
+                      className={styles.phoneInput}
+                      type="tel"
+                      placeholder="987 654 321"
+                      value={yapePhone}
+                      onChange={e => setYapePhone(e.target.value.replace(/\D/g, '').slice(0, 9))}
+                      required
+                    />
+                  </div>
+                </>
+              )}
+
+              {yapeTab === 'qr' && (
+                <div className={styles.qrBox}>
+                  <div className={styles.qrPlaceholder}>
+                    <span className={styles.qrIcon}>▩</span>
+                    <p className={styles.qrHint}>Escanea con tu app Yape</p>
+                    <p className={styles.qrSub}>Abre Yape → Escanear QR</p>
+                  </div>
+                  {/* Reemplaza el div de arriba con: <img src="/tu-qr-yape.png" alt="QR Yape" className={styles.qrImg} /> */}
+                  <input type="hidden" value="qr" required />
+                </div>
+              )}
+
               <button type="submit" className={styles.payBtn}>
-                <FiLock size={15} /> Confirmar pago — $ {total.toFixed(2)}
+                <FiLock size={15} /> Confirmar pago — $ {total.toFixed(2)} <span className={styles.payBtnSol}>/ S/ {(total * TC).toFixed(2)}</span>
               </button>
             </form>
           )}
@@ -144,7 +190,7 @@ function Checkout({ cartItems = [], onClearCart }) {
           {method === 'paypal' && (
             <form onSubmit={handlePay} className={styles.form}>
               <div className={styles.paypalCard}>
-                <span className={styles.paypalLogo}>Pay<b>Pal</b></span>
+                <img src="/paypal.png" alt="PayPal" className={styles.paypalLogoImg} />
                 <p>Ingresa tu correo asociado a PayPal</p>
               </div>
               <label className={styles.label}>Correo PayPal</label>
@@ -157,7 +203,7 @@ function Checkout({ cartItems = [], onClearCart }) {
                 required
               />
               <button type="submit" className={styles.payBtn}>
-                <FiLock size={15} /> Pagar con PayPal — $ {total.toFixed(2)}
+                <FiLock size={15} /> Pagar con PayPal — $ {total.toFixed(2)} <span className={styles.payBtnSol}>/ S/ {(total * TC).toFixed(2)}</span>
               </button>
             </form>
           )}
@@ -166,9 +212,9 @@ function Checkout({ cartItems = [], onClearCart }) {
           {method === 'card' && (
             <form onSubmit={handlePay} className={styles.form}>
               <div className={styles.cardBrands}>
-                <span className={styles.brand} style={{ color: '#1A1F71' }}>VISA</span>
-                <span className={styles.brand} style={{ color: '#EB001B' }}>MC</span>
-                <span className={styles.brand} style={{ color: '#2E77BC' }}>AMEX</span>
+                <img src="/visa.png"        alt="Visa"       className={styles.cardLogo} />
+                <img src="/mastercard.png"  alt="Mastercard" className={styles.cardLogo} />
+                <img src="/scotiaban.png"   alt="Scotiabank" className={styles.cardLogo} />
               </div>
 
               <label className={styles.label}>Número de tarjeta</label>
@@ -232,7 +278,7 @@ function Checkout({ cartItems = [], onClearCart }) {
               </div>
 
               <button type="submit" className={styles.payBtn}>
-                <FiCreditCard size={15} /> Pagar con tarjeta — $ {total.toFixed(2)}
+                <FiCreditCard size={15} /> Pagar con tarjeta — $ {total.toFixed(2)} <span className={styles.payBtnSol}>/ S/ {(total * TC).toFixed(2)}</span>
               </button>
             </form>
           )}

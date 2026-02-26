@@ -107,10 +107,24 @@
   color: #8B7355;
 }
 
+.itemPriceWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+}
+
 .itemPrice {
   font-size: 0.9rem;
   font-weight: 700;
   color: #5C4A3D;
+  white-space: nowrap;
+}
+
+.itemPriceSol {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9B8E82;
   white-space: nowrap;
 }
 
@@ -125,8 +139,28 @@
 .totalRow {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   font-size: 0.9rem;
   color: #5C4A3D;
+}
+
+.priceStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.05rem;
+}
+
+.sol {
+  font-size: 0.75rem;
+  color: #9B8E82;
+  font-weight: 600;
+}
+
+.solBold {
+  font-size: 0.85rem;
+  color: #8B7355;
+  font-weight: 700;
 }
 
 .freeShip {
@@ -199,6 +233,13 @@
 
 .methodIcon { font-size: 1.4rem; flex-shrink: 0; }
 
+.methodLogo {
+  height: 32px;
+  width: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .methodInfo {
   flex: 1;
   display: flex;
@@ -266,6 +307,122 @@
   box-shadow: 0 0 0 3px rgba(255,140,66,0.12);
 }
 
+/* ── Yape tabs ──────────────────────────────────── */
+.yapeTabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  background: #F0EBE3;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.yapeTabBtn {
+  flex: 1;
+  padding: 0.55rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #8B7355;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.yapeTabActive {
+  background: white;
+  color: #6B21C8;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* ── QR placeholder ─────────────────────────────── */
+.qrBox {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.qrPlaceholder {
+  width: 180px;
+  height: 180px;
+  border: 2px dashed #C5B8AA;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FDFCFB;
+  gap: 0.4rem;
+}
+
+.qrIcon {
+  font-size: 4rem;
+  color: #6B21C8;
+  line-height: 1;
+}
+
+.qrHint {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #5C4A3D;
+  margin: 0;
+  text-align: center;
+}
+
+.qrSub {
+  font-size: 0.75rem;
+  color: #9B8E82;
+  margin: 0;
+  text-align: center;
+}
+
+.qrImg {
+  width: 180px;
+  height: 180px;
+  border-radius: 16px;
+  object-fit: contain;
+}
+
+/* ── Yape phone prefix ──────────────────────────── */
+.phoneWrap {
+  display: flex;
+  align-items: center;
+  border: 2px solid #EDE7DF;
+  border-radius: 10px;
+  background: #FDFCFB;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.phoneWrap:focus-within {
+  border-color: #FF8C42;
+  box-shadow: 0 0 0 3px rgba(255,140,66,0.12);
+}
+
+.phonePrefix {
+  padding: 0.75rem 0.9rem;
+  background: #F0EBE3;
+  color: #5C4A3D;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-right: 2px solid #EDE7DF;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.phoneInput {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #5C4A3D;
+  background: transparent;
+  box-sizing: border-box;
+}
+
 .cardRow {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -278,6 +435,33 @@
   display: flex;
   gap: 0.6rem;
   margin-bottom: 0.25rem;
+}
+
+.tarjetasImg {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.cardLogo {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+.visaBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 0 10px;
+  background: #1A1F71;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 900;
+  font-style: italic;
+  border-radius: 6px;
+  letter-spacing: 1px;
 }
 
 .brand {
@@ -299,6 +483,7 @@
   margin-bottom: 0.5rem;
 }
 .yapeLogo { font-size: 2rem; margin-bottom: 0.5rem; }
+.yapeLogoImg { height: 48px; width: auto; object-fit: contain; margin-bottom: 0.5rem; }
 .yapeLabel { font-size: 0.82rem; opacity: 0.85; margin: 0 0 0.25rem; }
 .yapeNum { font-size: 1.5rem; font-weight: 900; margin: 0; letter-spacing: 1px; }
 
@@ -314,6 +499,7 @@
   gap: 1rem;
 }
 .paypalLogo { font-size: 1.3rem; font-style: italic; white-space: nowrap; }
+.paypalLogoImg { height: 36px; width: auto; object-fit: contain; flex-shrink: 0; }
 .paypalCard p { margin: 0; font-size: 0.85rem; opacity: 0.9; }
 
 /* ── Botón pagar ─────────────────────────────────── */
@@ -338,6 +524,12 @@
 .payBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255,140,66,0.4);
+}
+
+.payBtnSol {
+  font-size: 0.82rem;
+  font-weight: 600;
+  opacity: 0.8;
 }
 
 .secure {
