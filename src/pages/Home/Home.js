@@ -61,8 +61,6 @@ function CertsCarousel() {
   const prev = () => setCurrent(c => (c - 1 + total) % total);
   const next = () => setCurrent(c => (c + 1) % total);
 
-  const cert = CERTS[current];
-
   return (
     <div className={styles.slideWrapper}>
       {CERTS.map((c, i) => (
