@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {
   FiBarChart2, FiPackage, FiClipboard, FiDollarSign,
   FiAlertTriangle, FiTrendingUp, FiCheckCircle, FiClock,
-  FiTruck, FiDownload, FiUsers, FiLogOut, FiMail, FiPhone
+  FiTruck, FiDownload, FiUsers, FiLogOut, FiMail, FiPhone, FiFileText
 } from 'react-icons/fi';
 import styles from './Employee.module.css';
 import { products } from '../../data/products';
@@ -32,6 +32,46 @@ function Employee() {
   const handleSave = (productId) => {
     setSaved(prev => ({ ...prev, [productId]: true }));
     setTimeout(() => setSaved(prev => ({ ...prev, [productId]: false })), 2000);
+  };
+
+  const exportPDF = () => {
+    const date = new Date().toLocaleDateString('es-PE');
+    const rows = inventory.map(item => `
+      <tr>
+        <td>${item.emoji} ${item.name}</td>
+        <td>$ ${item.price.toFixed(2)}</td>
+        <td>${item.stock}</td>
+        <td class="${item.stock < 20 ? 'low' : 'ok'}">${item.stock < 20 ? '⚠ Stock Bajo' : '✓ OK'}</td>
+      </tr>`).join('');
+    const win = window.open('', '_blank');
+    win.document.write(`<!DOCTYPE html><html><head>
+      <title>Inventario AKTIVA - ${date}</title>
+      <style>
+        body { font-family: Arial, sans-serif; padding: 2rem; color: #333; }
+        h1 { color: #5C4A3D; margin: 0; }
+        h2 { color: #8B7355; margin: 0.25rem 0 0.5rem; font-weight: 400; }
+        p  { color: #999; font-size: 0.85rem; margin: 0 0 1.5rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #5C4A3D; color: white; padding: 0.75rem 1rem; text-align: left; font-size: 0.9rem; }
+        td { padding: 0.65rem 1rem; border-bottom: 1px solid #eee; font-size: 0.88rem; }
+        tr:nth-child(even) td { background: #faf8f5; }
+        .low { color: #e74c3c; font-weight: 700; }
+        .ok  { color: #27ae60; font-weight: 700; }
+        .footer { margin-top: 2rem; color: #bbb; font-size: 0.78rem; text-align: right; }
+      </style>
+    </head><body>
+      <h1>AKTIVA Energy Bars</h1>
+      <h2>Reporte de Inventario</h2>
+      <p>Generado el ${date} · ${inventory.length} productos</p>
+      <table>
+        <thead><tr><th>Producto</th><th>Precio (USD)</th><th>Stock</th><th>Estado</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <p class="footer">Panel de Empleados — AKTIVA Energy Bars</p>
+    </body></html>`);
+    win.document.close();
+    win.focus();
+    setTimeout(() => { win.print(); win.close(); }, 400);
   };
 
   const exportCSV = () => {
@@ -148,9 +188,14 @@ function Employee() {
           <div>
             <div className={styles.sectionTop}>
               <h2>Gestión de Inventario</h2>
-              <button className={styles.exportBtn} onClick={exportCSV}>
-                <FiDownload size={15} /> Exportar CSV
-              </button>
+              <div className={styles.exportBtns}>
+                <button className={styles.exportBtn} onClick={exportCSV}>
+                  <FiDownload size={15} /> CSV
+                </button>
+                <button className={styles.exportBtnPdf} onClick={exportPDF}>
+                  <FiFileText size={15} /> PDF
+                </button>
+              </div>
             </div>
             <div className={styles.table}>
               <div className={styles.tableHead}>

@@ -201,7 +201,12 @@
   font-size: 0.88rem;
 }
 
-/* ── Export button ────────────────────────────── */
+/* ── Export buttons ───────────────────────────── */
+.exportBtns {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .exportBtn {
   display: flex;
   align-items: center;
@@ -218,6 +223,23 @@
   font-family: inherit;
 }
 .exportBtn:hover { box-shadow: 0 4px 12px rgba(156,191,136,0.4); transform: translateY(-1px); }
+
+.exportBtnPdf {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, #E05C3A, #c44a2a);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.87rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  font-family: inherit;
+}
+.exportBtnPdf:hover { box-shadow: 0 4px 12px rgba(224,92,58,0.4); transform: translateY(-1px); }
 
 /* ── Tabla inventario ─────────────────────────── */
 .table {
